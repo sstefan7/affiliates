@@ -21,6 +21,15 @@ jobs:
             
       - name: Install dependencies with composer
         run: composer update --no-ansi --no-interaction --no-progress
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+
+      - name: Build project
+        run: npm run build
           
       - name: Run tests with phpunit/phpunit
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
